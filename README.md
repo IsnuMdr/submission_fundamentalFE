@@ -2,7 +2,6 @@
 
 front-end web API (Covid Case Tracker)
 
-SAP MOVIE
 Website about movie list referensi, there are some genre in this Website. you can see some referensi for you watch in real website movie when pandemic covid-19.
 
 Kriteria Submission
