@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description"
+        content="Informasi data terbaru mengenai kasus Virus Corona di seluruh dunia. Data di website akan selalu di update secara otomatis dan berasal dari Johns Hopkins University">
+    <meta name="keywords" content="Data Corona, Informasi Data Corona">
+
+    <title>Pantau Covid-19</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+
+
+    <!-- <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css"> -->
+    <!-- <link rel="stylesheet" href="./styles/app.css"> -->
+</head>
+
+<body>
+
+    <header>
+        <section id="header" class="fixed-top d-flex align-items-center">
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="index.html">Pantau <span class="text-warning">Covid-19</span></a></h1>
+            </div>
+            <nav class="mt-3"><input type="checkbox" id="check"> <label for="check" class="checkbtn"><i
+                        class="fas fa-bars"></i></label>
+                <ul class="font-weight-bold">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#indo">Indonesia</a></li>
+                    <li><a href="#data-global">Global</a></li>
+                    <li><a href="#hotline">Hotline</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section id="hero">
+            <div class="row container-lg">
+                <div class="col-lg-7 m-auto">
+                    <div class="box-jumbotron my-3">
+                        <h3 class="font-weight-bold">Pantau Sebaran Kasus <span class="text-warning">Covid-19</span> di
+                            Indonesia dan Global</h3>
+                        <h6 class="text-white">Sumber Data : Kementerian Kesehatan & Johns Hopkins University</h6>
+                        <a href="https://smkalirsyadtegal.sch.id"
+                            class="btn btn-outline-info text-white font-weight-bold"
+                            style="border-radius: 20px; padding: 10px 20px;">Kembali ke Portal</a>
+                    </div>
+                </div>
+                <div class="box-hotline col-lg-5 text-center">
+                    <div class="box">
+                        <h5 class="font-weight-bold">KOTA TEGAL TANGGAP COVID-19</h5>
+                        <h6>Hubungi Layanan Kota Tegal Tanggap COVID-19</h6>
+                        <button class="btn btn-warning mt-3 text-white"><i class="fas fa-phone-alt mr-2"></i><a
+                                class="text-white" href="tel:+6282211555119">082211555119</a></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="container-lg">
+        <article id="indo" class="my-5">
+            <section class="counts text-center">
+                <h3>Data Kasus Coronavirus di Indonesia</h3>
+                <p class="mb-lg-5">Terakhir diupdate: <span id="last-update"></span> </p>
+                <div class="row mb-5">
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box warning">
+                            <span class="icon bg-warning"><i class="fas fa-frown"></i></span>
+                            <span id="casesIndo"></span>
+                            <p>POSITIF</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <span class="icon bg-success"><i class="fas fa-smile"></i></span>
+                            <span id="recoveredIndo"></span>
+                            <p>SEMBUH</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <span class="icon  bg-danger"><i class="fas fa-sad-tear"></i></span>
+                            <span id="deathsIndo"></span>
+                            <p>MENINGGAL</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                        <div class="count-box">
+                            <span class="icon"><i class="fas fa-frown-open"></i></span>
+                            <span id="activeIndo"></span>
+                            <p>DALAM PERAWATAN</p>
+                        </div>
+                    </div>
+
+            </section>
+            <div class="card mb-5 shadow">
+                <div class="card-header text-center">
+                    <h4>Statistik Data Indonesia</h4>
+                </div>
+                <div class="card-body">
+                    <section>
+                        <h5 class="text-center">Statistik Kasus Coronavirus di Indonesia 30 Hari Terakhir <small
+                                class="text-danger">[Live
+                                Data]</small></h5>
+                        <canvas id="chartIndo" class="pr-lg-5 pl-lg-5 mb-5"></canvas>
+                    </section>
+                    <section>
+                        <h5 class="text-center">Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi <small
+                                class="text-danger">[Live
+                                Data]</small></h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-sm">
+                                <thead class="text-center">
+                                    <tr class="font-weight-bold">
+                                        <th>No.</th>
+                                        <th>Provinsi</th>
+                                        <th>Positif</th>
+                                        <th>Sembuh</th>
+                                        <th>Meninggal</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="data-prov">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+
+        <article id="data-global" class="my-lg-5">
+            <div class="card my-4 shadow">
+                <div class="card-header text-center">
+                    <h4>Data Global <small class="text-danger">[Live Data]</small></h4>
+                </div>
+                <div class="card-body">
+                    <section id="global" class="counts mt-lg-5 mb-5">
+                        <div class="row mt-6">
+                            <div class="col-md-4 mt-5 mt-lg-0">
+                                <div class="count-box">
+                                    <span class="icon bg-warning"><i class="fas fa-frown"></i></span>
+                                    <span id="casesGlob"></span>
+                                    <p>POSITIF</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-5 mt-lg-0">
+                                <div class="count-box">
+                                    <span class="icon  bg-success"><i class="fas fa-smile"></i></span>
+                                    <span id="recoveredGlob"></span>
+                                    <p>SEMBUH</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-5 mt-lg-0">
+                                <div class="count-box">
+                                    <span class="icon bg-danger"><i class="fas fa-sad-tear"></i></span>
+                                    <span id="deathsGlob"></span>
+                                    <p>MENINGGAL</p>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="table-responsive ">
+                        <table class="table table-bordered table-hover table-sm">
+                            <thead class="text-center">
+                                <tr class="font-weight-bold">
+                                    <th>No.</th>
+                                    <th>Negara</th>
+                                    <th>Positif</th>
+                                    <th>Sembuh</th>
+                                    <th>Meninggal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-glob">
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </article>
+
+        <article id="hotline" class="hotline container-lg my-5">
+            <h3>Hotline Coronavirus Indonesia</h3>
+            <p>Layanan darurat via telepon yang disediakan oleh Kemkes dan juga Pemprov DKI Jakarta</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/menkes.png" alt="" width="80px">
+                        <h3><a href="tel:0215210411">021-5210-411</a><br>
+                            <a href="tel:081212123119">0812-1212-3119</a></h3>
+                        <p>Kementrian Kesehatan</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/pemprov_dki.png" alt="" width="80px">
+                        <h3><a href="tel:112">112</a><br>
+                            <a href="tel:081288376955">0812-8837-6955</a></h3>
+                        <p>Pemprov DKI Jakarta</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/pemprov_jabar.png" alt="" width="80px">
+                        <h3><a href="tel:119">119</a><br>
+                            <a href="tel:08112093306">0811-209-3306</a></h3>
+                        <p>Pemprov Jawa Barat</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/pemprov_jateng.png" alt="" width="80px">
+                        <h3><a href="tel:0243580713">024-358-0713</a><br>
+                            <a href="tel:082313600560">0823-1360-0560</a></h3>
+                        <p>Pemprov Jawa Tengah</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/pemprov_jatim.png" alt="" width="65px">
+                        <h3><a href="tel:0318430313">031-843-0313</a><br>
+                            <a href="tel:081334367800">0813-3436-7800</a></h3>
+                        <p>Pemprov Jawa Timur</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4">
+                    <div class="icon-box text-center">
+                        <img src="./img/pemprov_diy.jpg" alt="" width="70px">
+                        <h3><a href="tel:0274555585">0274-555-585</a><br>
+                            <a href="tel:08112764800">0811-2764-800</a></h3>
+                        <p>Pemprov DIY</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article id="about" class="my-5">
+            <h3 class="text-center mb-5">Tentang COVID-19
+            </h3>
+            <div class="row">
+                <div class="col-lg-6 text-justify">
+                    <h5 class="font-weight-bold">Apa Itu COVID-19</h5>
+                    <p>Coronavirus Disease 2019 atau COVID-19 adalah penyakit baru yang dapat menyebabkan gangguan
+                        pernapasan dan radang paru. Penyakit ini disebabkan oleh infeksi Severe Acute Respiratory
+                        Syndrome Coronavirus 2 (SARS-CoV-2). Gejala klinis yang muncul beragam, mulai dari seperti
+                        gejala flu biasa (batuk, pilek, nyeri tenggorok, nyeri otot, nyeri kepala) sampai yang
+                        berkomplikasi berat (pneumonia atau sepsis).</p>
+                    <h5 class="font-weight-bold mt-3">Bagaimana COVID-19 Menular? </h5>
+                    <p>COVID-19 adalah penyakit baru dan para peneliti masih mempelajari bagaimana cara penularannya.
+                        Dari berbagai penelitian, metode penyebaran utama penyakit ini diduga adalah melalui droplet
+                        saluran pernapasan dan kontak dekat dengan penderita. Droplet merupakan partikel kecil dari
+                        mulut penderita yang dapat mengandung virus penyakit, yang dihasilkan pada saat batuk, bersin,
+                        atau berbicara. Droplet dapat melewati sampai jarak tertentu (biasanya 1 meter).</p>
+                    <p>Droplet bisa menempel di pakaian atau benda di sekitar penderita pada saat batuk atau bersin.
+                        Namun, partikel droplet cukup besar sehingga tidak akan bertahan atau mengendap di udara dalam
+                        waktu yang lama. Namun, masyarakat diwajibkan untuk menggunakan masker kain yang menutupi hidung
+                        dan mulut untuk mencegah penyebaran droplet.</p>
+                </div>
+                <section class="col-lg-6">
+                    <div class="card shadow counts">
+                        <div class="card-body count-box">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <h5 class="font-weight-bold">Gejala COVID-19</h5>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-4 text-center">
+                                    <img class="img-resposive" src="./img/batuk-dan-nyeri.png" alt="">
+                                    <br>
+                                    <p class="font-weight-bold">Batuk dan Nyeri Tenggorokan</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <img class="img-resposive" src="./img/demam.png" alt="">
+                                    <br>
+                                    <p class="font-weight-bold">Demam suhu tinggi</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <img class="img-resposive" src="./img/sesak-napas.png" alt="">
+                                    <br>
+                                    <p class="font-weight-bold">Sesak napas</p>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-12 text-justify">
+                                    <p>Gejala COVID-19 mulai dari seperti gejala
+                                        flu biasa sampai kondisi berat seperti pneumonia (radang paru akut yang
+                                        gejalanya sesak napas). Jika Anda mengalami gejala, memiliki riwayat perjalanan
+                                        ke wilayah terjangkit, atau berpaparan dengan orang positif/kemungkinan
+                                        COVID-19, maka Anda diimbau untuk melakukan isolasi diri dan menghubungi Layanan
+                                        Tanggap Covid-19</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer id="footer" class="text-center text-white p-5">
+        &copy; Copyright <strong>MDRDev</strong>. All Rights Reserved <br>
+        Designed by <a href="https://www.facebook.com/isnu.mdr/">Isnu Munandar</a>
+    </footer>
+</body>
+
+</html>
