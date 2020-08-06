@@ -57,4 +57,4 @@ Anda bisa menggunakan package pihak ketika untuk melakukan AJAX pada proyek ini.
 - Tidak disarankan untuk melakukan submit berkali-kali karena akan memperlama proses penilaian.
 - Anda akan mendapat notifikasi hasil pengumpulan submission Anda via email, atau Anda dapat mengecek status submission pada akun Dicoding Anda.
 
-### Demo App
+#### [Demo App] (https://corona.smkalirsyadtegal.sch.id/)
